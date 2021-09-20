@@ -1,0 +1,84 @@
+$active_color: #a82222;
+$active_text_color: white;
+$disabled_color: #dbdbdb;
+$disabled_text_color: #9c9c9c;
+
+.Progress {
+  min-height: var(--breadcrumbs-height);
+  background-color: var(--breadcrumbs-background);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-top: 2em;
+  padding-bottom: 4em;
+}
+
+.ProgressStepContainer {
+  position: relative;
+
+  &.active {
+    .ProgressStepCircle {
+      background-color: $active_color;
+      color: $active_text_color;
+    }
+
+    span.ProgressStepText {
+      color: black;
+    }
+  }
+}
+
+.ProgressStepCircle {
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $disabled_color;
+  color: $disabled_text_color;
+  font-weight: 700;
+  margin: 0 0.6em;
+}
+
+.ProgressStepText {
+  position: absolute;
+  padding-top: 0.8em;
+  color: $disabled_text_color;
+  font-weight: 700;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  text-align: center;
+}
+
+.ProgressStepSeparator {
+  $separator_border_radius: 25px;
+
+  position: relative;
+  flex: 1 1 auto;
+  border-radius: $separator_border_radius;
+  height: 2.5px;
+  background-color: rgb(189, 189, 189);
+
+  &.active::after {
+    width: 100%;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    height: 2.5px;
+    width: 0%;
+    top: 0;
+    left: 0;
+    border-radius: $separator_border_radius;
+    background-color: $active_color;
+    transition: all 0.3s cubic-bezier(0.33, 0.34, 0.74, 0.74);
+  }
+}
+
+.TickImage {
+  width: 10px;
+  height: 10px;
+}
